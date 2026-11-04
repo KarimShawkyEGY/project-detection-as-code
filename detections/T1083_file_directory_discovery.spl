@@ -1,0 +1,9 @@
+# ATT&CK: T1083 - File and Directory Discovery
+# Tactic: Discovery
+# Severity: Low
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+(CommandLine="*dir /s*" OR CommandLine="*tree /F*"
+OR (CommandLine="*Get-ChildItem*" CommandLine="*recurse*")
+OR CommandLine="*gci -recurse*" OR CommandLine="*ls -recurse*")
+| eval technique="T1083", tactic="Discovery", severity="Low"
+| table _time, host, Image, CommandLine, ParentImage, User, technique, tactic, severity

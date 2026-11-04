@@ -1,0 +1,8 @@
+# ATT&CK: T1036 - Masquerading
+# Tactic: Defense Evasion
+# Severity: High
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+Image="*cmd.exe"
+NOT (Image="C:\\Windows\\System32\\cmd.exe" OR Image="C:\\Windows\\SysWOW64\\cmd.exe")
+| eval technique="T1036", tactic="Defense Evasion", severity="High"
+| table _time, host, Image, EventCode, CommandLine, ParentImage, User, technique, tactic, severity

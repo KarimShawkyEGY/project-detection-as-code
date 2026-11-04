@@ -1,0 +1,63 @@
+name: Validate SPL Detections
+
+on:
+  push:
+    paths:
+      - 'detections/**'
+  pull_request:
+    paths:
+      - 'detections/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate SPL detection files
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check all .spl files are non-empty
+        run: |
+          FAILED=0
+          for file in detections/*.spl; do
+            if [ ! -s "$file" ]; then
+              echo "FAIL: $file is empty"
+              FAILED=1
+            else
+              echo "PASS: $file"
+            fi
+          done
+          exit $FAILED
+
+      - name: Check each .spl file has ATT&CK mapping comment
+        run: |
+          FAILED=0
+          for file in detections/*.spl; do
+            if ! grep -q "# ATT&CK:" "$file"; then
+              echo "FAIL: $file missing ATT&CK comment"
+              FAILED=1
+            else
+              echo "PASS: $file - $(grep '# ATT&CK:' $file | head -1)"
+            fi
+          done
+          exit $FAILED
+
+      - name: Check each .spl file has Severity label
+        run: |
+          FAILED=0
+          for file in detections/*.spl; do
+            if ! grep -q "# Severity:" "$file"; then
+              echo "FAIL: $file missing Severity label"
+              FAILED=1
+            else
+              echo "PASS: $file - $(grep '# Severity:' $file | head -1)"
+            fi
+          done
+          exit $FAILED
+
+      - name: Print detection summary
+        run: |
+          COUNT=$(ls detections/*.spl 2>/dev/null | wc -l)
+          echo "Total SPL detections: $COUNT"
+          echo "All validation checks passed."

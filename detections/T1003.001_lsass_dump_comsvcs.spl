@@ -1,0 +1,7 @@
+# ATT&CK: T1003.001 - OS Credential Dumping: LSASS Memory
+# Tactic: Credential Access
+# Severity: Critical
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+CommandLine="*comsvcs*" CommandLine="*MiniDump*"
+| eval technique="T1003.001", tactic="Credential Access", severity="Critical"
+| table _time, host, Image, CommandLine, User, technique, tactic, severity

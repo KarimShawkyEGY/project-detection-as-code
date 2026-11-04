@@ -1,0 +1,8 @@
+# ATT&CK: T1105 - Ingress Tool Transfer
+# Tactic: Command and Control
+# Severity: High
+index=sysmon host=SOC-WIN11-SPLUN
+(EventCode=3 Image="*certutil*") OR
+(EventCode=1 Image="*certutil*" CommandLine="*urlcache*")
+| eval technique="T1105", tactic="Command and Control", severity="High"
+| table _time, host, EventCode, Image, CommandLine, DestinationIp, User, technique, tactic, severity

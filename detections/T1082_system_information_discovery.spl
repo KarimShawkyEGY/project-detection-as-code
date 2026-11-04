@@ -1,0 +1,8 @@
+# ATT&CK: T1082 - System Information Discovery
+# Tactic: Discovery
+# Severity: Low
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+(Image="*systeminfo*" OR Image="*hostname.exe*" OR CommandLine="*systeminfo*")
+NOT (CommandLine="*C:\*")
+| eval technique="T1082", tactic="Discovery", severity="Low"
+| table _time, host, Image, CommandLine, ParentImage, User, technique, tactic, severity

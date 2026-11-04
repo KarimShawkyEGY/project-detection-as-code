@@ -1,0 +1,7 @@
+# ATT&CK: T1547.001 - Boot or Logon Autostart: Registry Run Keys
+# Tactic: Persistence
+# Severity: High
+index=sysmon host=SOC-WIN11-SPLUN EventCode=13
+TargetObject="*CurrentVersion\\Run*"
+| eval technique="T1547.001", tactic="Persistence", severity="High"
+| table _time, host, Image, EventCode, TargetObject, Details, User, technique, tactic, severity

@@ -1,0 +1,10 @@
+# ATT&CK: T1059.001 - Encoded PowerShell Execution
+# Tactic: Execution
+# Severity: High
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+Image="*powershell*"
+(CommandLine="*-enc*" OR CommandLine="*EncodedCommand*" OR
+ CommandLine="*IEX*" OR CommandLine="*FromBase64String*" OR
+ CommandLine="* -e *")
+| eval technique="T1059.001", tactic="Execution", severity="High"
+| table _time, host, Image, CommandLine, ParentImage, User, technique, tactic, severity

@@ -1,0 +1,7 @@
+# ATT&CK: T1057 - Process Discovery
+# Tactic: Discovery
+# Severity: Low
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+(Image="*tasklist*" OR CommandLine="*Get-Process*")
+| eval technique="T1057", tactic="Discovery", severity="Low"
+| table _time, host, Image, EventCode, CommandLine, User, technique, tactic, severity

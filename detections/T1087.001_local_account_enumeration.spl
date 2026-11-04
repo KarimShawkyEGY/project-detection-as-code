@@ -1,0 +1,9 @@
+# ATT&CK: T1087.001 - Account Discovery: Local Account
+# Tactic: Discovery
+# Severity: Low
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+(CommandLine="*net user*" OR CommandLine="*net localgroup*" OR
+ CommandLine="*Get-LocalUser*" OR CommandLine="*Get-LocalGroupMember*" OR
+ Image="*net1.exe*")
+| eval technique="T1087.001", tactic="Discovery", severity="Low"
+| table _time, host, Image, EventCode, CommandLine, ParentImage, User, technique, tactic, severity

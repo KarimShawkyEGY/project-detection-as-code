@@ -1,0 +1,8 @@
+# ATT&CK: T1003.002 - OS Credential Dumping: SAM
+# Tactic: Credential Access
+# Severity: Critical
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+CommandLine="*reg save*"
+(CommandLine="*SAM*" OR CommandLine="*SYSTEM*" OR CommandLine="*SECURITY*")
+| eval technique="T1003.002", tactic="Credential Access", severity="Critical"
+| table _time, host, Image, CommandLine, User, technique, tactic, severity

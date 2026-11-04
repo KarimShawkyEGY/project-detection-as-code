@@ -1,0 +1,8 @@
+# ATT&CK: T1059.003 - cmd.exe Spawned by Unusual Parent
+# Tactic: Execution
+# Severity: Medium
+index=sysmon host=SOC-WIN11-SPLUN EventCode=1
+Image="*\\cmd.exe"
+CommandLine="*LOCALAPPDATA*" OR CommandLine="*~-3,1*"
+| eval technique="T1059.003", tactic="Execution", severity="Medium"
+| table _time, host, Image, EventCode, CommandLine, ParentImage, User, technique, tactic, severity

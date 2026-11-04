@@ -1,0 +1,7 @@
+# ATT&CK: T1112 - Modify Registry
+# Tactic: Defense Evasion
+# Severity: Medium
+index=sysmon host=SOC-WIN11-SPLUN EventCode=13
+Image="*reg.exe*"
+| eval technique="T1112", tactic="Defense Evasion", severity="Medium"
+| table _time, host, Image, TargetObject, Details, User, technique, tactic, severity
