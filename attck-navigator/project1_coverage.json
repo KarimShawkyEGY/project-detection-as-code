@@ -1,0 +1,28 @@
+{
+  "name": "Project 1 — Detection-as-Code Coverage",
+  "versions": {"attack": "14", "navigator": "4.9"},
+  "domain": "enterprise-attack",
+  "description": "Atomic Red Team simulation and Splunk SPL detection coverage",
+  "techniques": [
+    {"techniqueID": "T1059.001", "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1059.003", "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1053.005", "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1547.001", "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1112",     "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1082",     "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1083",     "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1087.001", "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1057",     "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1049",     "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1003.001", "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1003.002", "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1005",     "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1105",     "color": "#4CAF50", "comment": "Simulated + Detected"},
+    {"techniqueID": "T1036",     "color": "#4CAF50", "comment": "Simulated + Detected"}
+  ],
+  "legendItems": [
+    {"label": "Simulated + Detected", "color": "#4CAF50"}
+  ],
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#dddddd"
+}
