@@ -89,8 +89,8 @@ project1/
 ├── detections/ # 16 validated SPL alert files
 ├── attck-navigator/ # ATT&CK Navigator JSON layer
 ├── .github/
-│ └── workflows/
-│ └── validate-detections.yml
+│    └── workflows/
+│    └── validate-detections.yml
 └── README.md 
 
 ## ATT&CK Navigator
