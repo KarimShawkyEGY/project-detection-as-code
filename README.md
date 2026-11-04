@@ -51,7 +51,7 @@ the final alerts:
 | T1059.001 Test 10 — reg.exe fileless execution | No saved alert created — reg.exe process creation is too noisy without additional tuning | Documented in detection_notes.md; best detected via EDR behavioral rules in production |
 
 ## SPL Alerts (`detections/`)
-16 alerts covering all 15 techniques. Each `.spl` file includes a MITRE ATT&CK
+15 alerts covering all 15 techniques. Each `.spl` file includes a MITRE ATT&CK
 comment header, tactic, severity label, and the validated SPL query.
 
 | File | Technique | Tactic | Severity |
